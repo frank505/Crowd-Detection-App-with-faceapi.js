@@ -1,0 +1,27 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  position: absolute;
+}
+.custom-btn-style{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}
+
+.content-div{
+    position: absolute;
+}
