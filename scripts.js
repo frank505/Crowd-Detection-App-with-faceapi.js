@@ -30,6 +30,7 @@ loadModelsAndStartVideo();
 
 const loadModelsAndStartVideo = async() =>
 {
+    console.log('loading models');
     return Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_PATH),
         faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_PATH),
@@ -84,7 +85,7 @@ video.addEventListener('play', () => {
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-  }, 10)
+  }, 100)
 })
 
 
