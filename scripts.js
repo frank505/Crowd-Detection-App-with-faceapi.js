@@ -70,14 +70,32 @@ video.addEventListener('play', () => {
     if((getCrowdLimit!=null || getCrowdLimit!='') && (getCrowdLimit < detections.length))
     {
         let date = new Date();
-        data.push({
-            usersCount:detections.length,
-            crowdLimit:getCrowdLimit,
-            time: 'at '+date.getHours()+':'+date.getMinutes()+":"+date.getSeconds()+":"+
-            date.getMilliseconds()+" at "+date.getDate()+"/"+
-            (parseInt(date.getMonth())+1)+"/"+date.getFullYear()  
-        });
-
+        if(data.length == 0)
+        {
+            data.push({
+                usersCount:detections.length,
+                crowdLimit:getCrowdLimit,
+                time: 'at '+date.getHours()+':'+date.getMinutes()+":"+date.getSeconds()+":"+
+                date.getMilliseconds()+" at "+date.getDate()+"/"+
+                (parseInt(date.getMonth())+1)+"/"+date.getFullYear()  
+            });
+        }else
+        {
+            let lastData = data[data.length - 1];
+            if(lastData.usersCount!=detections.length)
+            {
+                data.push({
+                    usersCount:detections.length,
+                    crowdLimit:getCrowdLimit,
+                    time: 'at '+date.getHours()+':'+date.getMinutes()+":"+date.getSeconds()+":"+
+                    date.getMilliseconds()+" at "+date.getDate()+"/"+
+                    (parseInt(date.getMonth())+1)+"/"+date.getFullYear()  
+                });
+            }
+        }
+   
+                
+       
         
     }
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
